@@ -6,17 +6,17 @@ root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
 version="0.15.0"
-url="https://github.com/satoshilabs/bitcoin/releases/download"
-tag="v0.15.0"
+url="https://github.com/satoshilabs/bitcoin-gold/releases/download"
+tag="v0.15.0.1"
 
 if [ "${platform}" == "linux" ]; then
     if [ "${arch}" == "x86_64" ]; then
-        tarball_name="bitcoin-${version}-linux64.tar.gz"
+        tarball_name="bgold-${version}-linux64.tar.gz"
     elif [ "${arch}" == "x86_32" ]; then
-        tarball_name="bitcoin-${version}-linux32.tar.gz"
+        tarball_name="bgold-${version}-linux32.tar.gz"
     fi
 elif [ "${platform}" == "darwin" ]; then
-    tarball_name="bitcoin-${version}-osx64.tar.gz"
+    tarball_name="bgold-${version}-osx64.tar.gz"
 else
     echo "Bitcoin binary distribution not available for platform and architecture"
     exit -1
@@ -51,7 +51,7 @@ download_bitcoind() {
             echo "Unpacking bitcoin distribution"
             tar -xvzf $tarball_name
             if test $? -eq 0; then
-                ln -sf "bitcoin-${version}/bin/bitcoind"
+                ln -sf "bgold-${version}/bin/bgoldd"
                 return;
             fi
         fi
