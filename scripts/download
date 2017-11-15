@@ -51,7 +51,7 @@ download_bitcoind() {
             echo "Unpacking bitcoin distribution"
             tar -xvzf $tarball_name
             if test $? -eq 0; then
-                ln -sf "bgold-${version}/bin/bgoldd"
+                ln -sf "bitcoin-${version}/bin/bgoldd"
                 return;
             fi
         fi
