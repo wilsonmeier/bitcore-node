@@ -7,7 +7,7 @@ platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
 version="0.15.0"
 url="https://github.com/satoshilabs/bitcoin/releases/download"
-tag="v0.15.0"
+tag="v0.15.0-big-leveldb"
 
 if [ "${platform}" == "linux" ]; then
     if [ "${arch}" == "x86_64" ]; then
