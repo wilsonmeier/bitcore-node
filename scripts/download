@@ -40,12 +40,13 @@ download_bitcoind() {
     fi
 
     if test $? -eq 0; then
+        # Skip download of SHA256SUMS as we use the one in the repo for now
         if [ "${is_curl}" = true ]; then
             curl -L $binary_url > $tarball_name
-            curl -L $shasums_url > SHA256SUMS.asc
+            #curl -L $shasums_url > SHA256SUMS.asc
         else
             wget $binary_url
-            wget $shasums_url
+            #wget $shasums_url
         fi
         if test -e "${tarball_name}"; then
             echo "Unpacking bitcoin distribution"
@@ -89,9 +90,10 @@ if [ "${SKIP_BITCOIN_DOWNLOAD}" = 1 ]; then
     download=0;
 fi
 
-if [ "${VERIFY_BITCOIN_DOWNLOAD}" = 1 ]; then
+# Force verification for now
+#if [ "${VERIFY_BITCOIN_DOWNLOAD}" = 1 ]; then
     verify=1;
-fi
+#fi
 
 while [ -n "$1" ]; do
   param="$1"
