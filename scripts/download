@@ -43,10 +43,10 @@ download_bitcoind() {
         # Skip download of SHA256SUMS as we use the one in the repo for now
         if [ "${is_curl}" = true ]; then
             curl -L $binary_url > $tarball_name
-            #curl -L $shasums_url > SHA256SUMS.asc
+            curl -L $shasums_url > SHA256SUMS.asc
         else
             wget $binary_url
-            #wget $shasums_url
+            wget $shasums_url
         fi
         if test -e "${tarball_name}"; then
             echo "Unpacking bitcoin distribution"
